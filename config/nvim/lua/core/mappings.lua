@@ -55,7 +55,7 @@ M.general = {
 
     -- Close window
 
-    ["<leader>c"] = {
+    ["<leader>cw"] = {
       function ()
         vim.api.nvim_cmd("close")
       end
