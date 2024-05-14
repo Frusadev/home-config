@@ -18,6 +18,8 @@ return {
 	-- OpenGL for GPU acceleration, Software for CPU
 	front_end = "OpenGL",
 
+  -- default shell
+  default_prog = { "/usr/bin/tmux" },
 	-- Font config
 	font = font_with_fallback(font_name),
 	font_rules = {
@@ -40,7 +42,7 @@ return {
 	line_height = 1.0,
 
 	-- Cursor style
-	-- default_cursor_style = "BlinkingUnderline",
+	default_cursor_style = "BlinkingUnderline",
 
 	-- X11
 	enable_wayland = false,
