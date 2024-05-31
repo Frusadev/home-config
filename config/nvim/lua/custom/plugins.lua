@@ -5,6 +5,7 @@ local plugins = {
       ensure_installed = {
         "pyright",
         "nimlsp",
+        "nimlangserver",
         "eslint-lsp",
         "mypy",
         "htmlhint",
@@ -13,19 +14,29 @@ local plugins = {
         "jsonlint",
         "jq",
         "lua-language-server",
+        "v-analyzer",
+        "stylua",
       },
     },
   },
   {
-    'rmagatti/goto-preview',
+    "rcarriga/nvim-notify",
     config = function()
-      require("custom.configs.gotop")
+      require "custom.configs.notify"
+      -- vim.notify = require "notify"
     end,
-    event = "VeryLazy"
+    lazy = false,
+  },
+  {
+    "rmagatti/goto-preview",
+    config = function()
+      require "custom.configs.gotop"
+    end,
+    event = "VeryLazy",
   },
   {
     "https://github.com/mlaursen/vim-react-snippets.git",
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -40,12 +51,12 @@ local plugins = {
   },
   {
     "windwp/nvim-ts-autotag",
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
   {
     "onsails/lspkind.nvim",
-    config = function ()
-      return require("custom.configs.lspkind")
+    config = function()
+      return require "custom.configs.lspkind"
     end,
     event = "VeryLazy",
   },
@@ -57,30 +68,29 @@ local plugins = {
   --   lazy = false,
   -- },
   {
-    'stevearc/conform.nvim',
-    opts = {
-    },
-    config = function ()
-      return require("custom.configs.conform")
+    "stevearc/conform.nvim",
+    opts = {},
+    config = function()
+      return require "custom.configs.conform"
     end,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
   {
     "mfussenegger/nvim-lint",
-    config = function ()
-      return require("custom.configs.nvim-lint")
+    config = function()
+      return require "custom.configs.nvim-lint"
     end,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
   {
-    'vidocqh/auto-indent.nvim',
+    "vidocqh/auto-indent.nvim",
     opts = {},
-    config = function ()
-      require("auto-indent").setup ({
+    config = function()
+      require("auto-indent").setup {
         lightmode = false,
-      })
+      }
     end,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
   {
     "elkowar/yuck.vim",
@@ -88,8 +98,8 @@ local plugins = {
   },
   {
     "pocco81/auto-save.nvim",
-    config = function ()
-      return require("custom.configs.autosave")
+    config = function()
+      return require "custom.configs.autosave"
     end,
     lazy = false,
     vim.api.nvim_set_keymap("n", "<leader>as", ":ASToggle<CR>", {}),
@@ -99,7 +109,7 @@ local plugins = {
     event = "VeryLazy",
     config = function()
       require("wrapping").setup()
-    end
+    end,
   },
   -- null ls
   {
@@ -113,7 +123,7 @@ local plugins = {
     --   "c++",
     -- },
     dependencies = {
-      'nvim-lua/plenary.nvim',
+      "nvim-lua/plenary.nvim",
       "nvimtools/none-ls-extras.nvim",
     },
     opts = function()
@@ -129,50 +139,50 @@ local plugins = {
     end,
   },
   {
-    'mfussenegger/nvim-dap',
-    config = function (_, opts)
-      require("core.utils").load_mappings("dap")
-    end
+    "mfussenegger/nvim-dap",
+    config = function(_, opts)
+      require("core.utils").load_mappings "dap"
+    end,
   },
   {
     "mfussenegger/nvim-dap-python",
     ft = "python",
     dependencies = {
-      'mfussenegger/nvim-dap',
+      "mfussenegger/nvim-dap",
       "rcarriga/nvim-dap-ui",
     },
 
     config = function(_, opts)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
-      require("core.utils").load_mappings("dap_python")
+      require("core.utils").load_mappings "dap_python"
     end,
   },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = {
-      "mfussenegger/nvim-dap"
+      "mfussenegger/nvim-dap",
     },
 
-    config = function ()
-      local dap = require("dap")
-      local dapui = require("dapui")
+    config = function()
+      local dap = require "dap"
+      local dapui = require "dapui"
       dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function ()
+      dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
 
-      dap.listeners.after.event_terminated["dapui_config"] = function ()
+      dap.listeners.after.event_terminated["dapui_config"] = function()
         dapui.close()
       end
 
-      dap.listeners.after.event_exited["dapui_config"] = function ()
+      dap.listeners.after.event_exited["dapui_config"] = function()
         dapui.close()
       end
-    end
+    end,
   },
   {
-    'alaviss/nim.nvim',
+    "alaviss/nim.nvim",
     ft = { "nim" },
   },
   {
@@ -180,37 +190,46 @@ local plugins = {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
   },
   --- Uncomment these if you want to manage LSP servers from neovim
   -- {'williamboman/mason.nvim'},
   -- {'williamboman/mason-lspconfig.nvim'},
 
-  {'VonHeikemen/lsp-zero.nvim',
+  {
+    "VonHeikemen/lsp-zero.nvim",
 
-    branch = 'v3.x',
-    config = function ()
+    branch = "v3.x",
+    config = function()
       require "custom.configs.lsp_zero"
-    end
+    end,
   },
   -- {'neovim/nvim-lspconfig'},
-  {'hrsh7th/cmp-nvim-lsp'},
-  {'hrsh7th/nvim-cmp'},
-  {'L3MON4D3/LuaSnip'},
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/nvim-cmp" },
+  { "L3MON4D3/LuaSnip" },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
   },
-
+  {
+    "akinsho/flutter-tools.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- optional for vim.ui.select
+    },
+    config = true,
+  },
 }
 
 return plugins

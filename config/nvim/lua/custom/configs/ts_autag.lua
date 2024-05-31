@@ -1,5 +1,15 @@
 local opts = {
-  ensure_installed = { "lua" },
+  ensure_installed = {
+    "lua",
+    "markdown",
+    "nim",
+    "javascript",
+    "tsx",
+    "python",
+    "html",
+    "css",
+    "scss",
+  },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   autotag = {
@@ -15,7 +25,7 @@ local opts = {
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
     -- the name of the parser)
     -- list of language that will be disabled
-    disable = { },
+    disable = {},
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -23,7 +33,7 @@ local opts = {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-  indent = {enable = true},
+  indent = { enable = true },
 }
 
 return opts

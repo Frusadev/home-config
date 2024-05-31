@@ -46,12 +46,37 @@ local default_plugins = {
 
   {
     "nvim-tree/nvim-web-devicons",
-    opts = function()
-      return { override = require "nvchad.icons.devicons" }
-    end,
-    config = function(_, opts)
+    -- opts = function()
+    --   return { override = require "nvchad.icons.devicons" }
+    -- end,
+    config = function()
       dofile(vim.g.base46_cache .. "devicons")
-      require("nvim-web-devicons").setup(opts)
+      -- require("nvim-web-devicons").setup(opts)
+      require("nvim-web-devicons").setup {
+        default = true,
+        override = {},
+        override_by_extension = {
+          ["v"] = {
+            icon = "",
+            color = "#263a75",
+            name = "Vlang",
+          },
+
+          ["vv"] = {
+            icon = "",
+            color = "#263a75",
+            name = "Vlang",
+          },
+          require("nvim-web-devicons").set_icon {
+            vlang = {
+              icon = "",
+              color = "#263a75",
+              cterm_color = "65",
+              name = "Vlang",
+            },
+          },
+        },
+      }
     end,
   },
 

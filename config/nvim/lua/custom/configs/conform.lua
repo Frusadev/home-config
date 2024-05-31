@@ -1,6 +1,7 @@
 local conform = require("conform")
 
 conform.setup({
+  lsp_fallback = true,
   formatters_by_ft = {
     javascript = {"biome"},
     html = {"prettier"},
@@ -8,6 +9,8 @@ conform.setup({
     javascriptreact = {"biome"},
     typescriptreact = {"biome"},
     python = {"black"},
+    lua = {"stylua"},
+    dart = {"dart_format"},
   },
   notify_on_error = false,
 })

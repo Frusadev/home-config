@@ -24,6 +24,8 @@ M.blankline = {
 
 M.luasnip = function(opts)
   require("luasnip").config.set_config(opts)
+  -- friendly snippets
+  require'luasnip'.filetype_extend("javascriptreact", {"html"})
 
   -- vscode format
   require("luasnip.loaders.from_vscode").lazy_load()

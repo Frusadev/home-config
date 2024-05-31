@@ -23,11 +23,10 @@ M.conform = {
   n = {
       ["<leader>fm"] = {
       function(args)
-
         local conform = require("conform")
-        conform.format({ bufnr = vim.api.bufnr, async = true })
+        conform.format({ bufnr = vim.api.bufnr, async = true, lsp_fallback = true })
       end,
-      "LSP formatting",
+      "Conform formatting",
     },
   }
 }

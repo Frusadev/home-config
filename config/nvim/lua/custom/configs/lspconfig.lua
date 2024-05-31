@@ -9,7 +9,7 @@ lspconfig.pyright.setup({
 })
 
 -- or nimls
-lspconfig.nim_langserver.setup({
+lspconfig.nimls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = "nim"
@@ -50,6 +50,11 @@ lspconfig.html.setup({
     "html",
     "javascript",
   }
+})
+
+lspconfig.v_analyzer.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
 })
 
 -- vim.api.nvim_create_autocmd("LspAttach", {

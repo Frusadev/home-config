@@ -7,6 +7,7 @@ M.general = {
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
+    -- ["<A-n>"] = { "<ESC>", "Go to normal mode" },
 
     -- navigate within insert mode
     ["<C-h>"] = { "<Left>", "Move left" },
@@ -57,21 +58,21 @@ M.general = {
 
     ["<leader>cw"] = {
       function ()
-        vim.api.nvim_cmd("close")
+        vim.api.nvim_command("close")
       end
     },
 
     -- Vertical split
     ["<leader>v"] = {
       function ()
-        vim.api.nvim_cmd("vsplit")
+        vim.api.nvim_command("vsplit")
       end
     },
 
     -- horizontal split
     ["<leader>h"] = {
       function ()
-        vim.api.nvim_cmd("split")
+        vim.api.nvim_command("split")
       end
     },
 
@@ -79,28 +80,28 @@ M.general = {
       -- Vertical
     ["+"] = {
       function ()
-        vim.api.nvim_cmd("vertical resize +5")
+        vim.api.nvim_command("vertical resize +5")
       end
     },
 
     ["-"] = {
       function ()
-        vim.api.nvim_cmd("vertical resize -5")
+        vim.api.nvim_command("vertical resize -5")
       end
     },
     -- horizontal
 
-    ["1"] = {
-      function ()
-        vim.api.nvim_cmd("resize +5")
-      end
-    },
-
-    ["2"] = {
-      function ()
-        vim.api.nvim_cmd("resize -5")
-      end
-    },
+    -- ["1"] = {
+    --   function ()
+    --     vim.api.nvim_command("resize +5")
+    --   end
+    -- },
+    --
+    -- ["2"] = {
+    --   function ()
+    --     vim.api.nvim_command("resize -5")
+    --   end
+    -- },
   },
 
   t = {
