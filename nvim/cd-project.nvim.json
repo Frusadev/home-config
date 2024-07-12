@@ -1,0 +1,34 @@
+[
+  {
+    "name": "frusadev",
+    "path": "/home/frusadev"
+  },
+  {
+    "name": "arila",
+    "path": "/home/frusadev/Workspace/Projects/arila"
+  },
+  {
+    "name": "calc",
+    "path": "/home/frusadev/Workspace/Projects/calc"
+  },
+  {
+    "name": "nvim",
+    "path": "/home/frusadev/.config/nvim"
+  },
+  {
+    "name": "Projects",
+    "path": "/home/frusadev/Workspace/Projects"
+  },
+  {
+    "name": "cfmm",
+    "path": "/home/frusadev/Workspace/Projects/cfmm"
+  },
+  {
+    "name": "frusanim.nvim",
+    "path": "/home/frusadev/Workspace/Projects/frusanim.nvim"
+  },
+  {
+    "name": "confman",
+    "path": "/home/frusadev/Workspace/Projects/confman"
+  }
+]
