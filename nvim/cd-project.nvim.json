@@ -30,5 +30,21 @@
   {
     "name": "confman",
     "path": "/home/frusadev/Workspace/Projects/confman"
+  },
+  {
+    "name": "django_learn",
+    "path": "/home/frusadev/Workspace/Projects/django_learn"
+  },
+  {
+    "name": "fastapiintro",
+    "path": "/home/frusadev/Workspace/Projects/fastapiintro"
+  },
+  {
+    "name": "Portfolio",
+    "path": "/home/frusadev/Workspace/Projects/Portfolio"
+  },
+  {
+    "name": "nextln",
+    "path": "/home/frusadev/Workspace/Projects/nextln"
   }
 ]

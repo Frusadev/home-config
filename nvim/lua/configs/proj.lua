@@ -16,6 +16,11 @@ require("cd-project").setup {
     "isproj",
     "prlist",
     "v.mod",
+    ".venv",
+    "frontend",
+    "backend",
+    "server",
+    "*.mod",
   },
   choice_format = "name", -- optional, you can switch to "name" or "path"
   projects_picker = "telescope", -- optional, you can switch to `telescope`

@@ -15,7 +15,7 @@ return {
         "nimlsp",
         "nimlangserver",
         "eslint-lsp",
-        "mypy",
+        "flake8",
         "htmlhint",
         "html-lsp",
         "biome",
@@ -33,32 +33,29 @@ return {
       require "configs.term"
     end,
   },
-  -- {
-  --   "echasnovski/mini.icons",
-  --   opts = {},
-  --   lazy = true,
-  --   config = function()
-  --     package.preload["nvim-web-devicons"] = function()
-  --       -- needed since it will be false when loading and mini will fail
-  --       package.loaded["nvim-web-devicons"] = {}
-  --       require("mini.icons").mock_nvim_web_devicons()
-  --       return package.loaded["nvim-web-devicons"]
-  --     end
-  --   end,
-  -- },
-  -- {
-  --   "akinsho/toggleterm.nvim",
-  --   config = function()
-  --     require "configs.term"
-  --   end,
-  --   lazy = false,
-  -- },
   {
     "LintaoAmons/cd-project.nvim",
     lazy = false,
     config = function()
       require "configs.proj"
     end,
+  },
+  {
+    "linux-cultist/venv-selector.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-dap",
+      "mfussenegger/nvim-dap-python", --optional
+      { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+    },
+    lazy = false,
+    branch = "regexp", -- This is the regexp branch, use this for the new version
+    config = function()
+      require("venv-selector").setup()
+    end,
+    keys = {
+      { "<leader>cv", "<cmd>VenvSelect<cr>" },
+    },
   },
   {
     "wthollingsworth/pomodoro.nvim",
@@ -73,19 +70,6 @@ return {
       }
     end,
   },
-  -- { "/zah/nim.vim", ft = "nim" },
-  -- {
-  --   "jackMort/ChatGPT.nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("chatgpt").setup()
-  --   end,
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim",
-  --   },
-  -- },
   {
     "petertriho/nvim-scrollbar",
     config = function()
@@ -93,25 +77,6 @@ return {
     end,
     lazy = false,
   },
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   priority = 1000,
-  --   config = function()
-  --     require "configs.cat"
-  --   end,
-  --   lazy = true,
-  -- },
-
-  -- { "m-demare/hlargs.nvim", event = "VeryLazy" },
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   config = function()
-  --     require "custom.configs.notify"
-  --     -- vim.notify = require "notify"
-  --   end,
-  --   lazy = false,
-  -- },
   {
     "rmagatti/goto-preview",
     config = function()
@@ -155,13 +120,6 @@ return {
     end,
     event = "VeryLazy",
   },
-  -- {
-  --   'ray-x/web-tools.nvim',
-  --   config = function ()
-  --     return require("custom.configs.webtools")
-  --   end,
-  --   lazy = false,
-  -- },
   {
     "nvim-tree/nvim-web-devicons",
     config = function()
@@ -209,10 +167,6 @@ return {
     end,
     event = "VeryLazy",
   },
-  -- {
-  --   "elkowar/yuck.vim",
-  --   event = "VeryLazy",
-  -- },
   {
     "pocco81/auto-save.nvim",
     config = function()
@@ -228,25 +182,6 @@ return {
       require("wrapping").setup()
     end,
   },
-  -- null ls
-  -- {
-  --   "nvimtools/none-ls.nvim",
-  --   event = "VeryLazy",
-  --   -- ft = {
-  --   --   "python",
-  --   --   "javascript",
-  --   --   "typescript",
-  --   --   "c",
-  --   --   "c++",
-  --   -- },
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvimtools/none-ls-extras.nvim",
-  --   },
-  --   opts = function()
-  --     return require "custom.configs.null_ls"
-  --   end,
-  -- },
   {
     "mfussenegger/nvim-dap",
     config = function(_, opts) end,
@@ -289,11 +224,6 @@ return {
     end,
   },
   { "heysokam/nim.vim", lazy = false },
-  -- {
-  --   "alaviss/nim.nvim",
-  --   ft = { "nim" },
-  --   event = "VeryLazy",
-  -- },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -347,24 +277,4 @@ return {
       require "configs.lspconfig"
     end,
   },
-  --
-  -- {
-  -- 	"williamboman/mason.nvim",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"lua-language-server", "stylua",
-  -- 			"html-lsp", "css-lsp" , "prettier"
-  -- 		},
-  -- 	},
-  -- },
-  --
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
 }

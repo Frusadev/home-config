@@ -3,7 +3,7 @@ require('lint').linters_by_ft = {
   typescript = {"biomejs"},
   html = {"htmlhint"},
   json = {"jsonlint"},
-  python = {"mypy"},
+  python = {"flake8"},
 }
 
 vim.api.nvim_create_autocmd({ "BufRead", "TextChanged", "InsertLeave" }, {

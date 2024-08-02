@@ -37,6 +37,10 @@ map("n", "<leader>fm", function()
   require("conform").format { lsp_fallback = true }
 end, { desc = "format files" })
 
+-- python venv switch
+-- map("n", "<leader>cv", function()
+--   require('swenv.api').pick_venv()
+-- end, { desc = "Change python venv" })
 -- global lsp mappings
 map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "lsp diagnostic loclist" })
 
